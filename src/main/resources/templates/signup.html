@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Signup</title>
-    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="../static/signup.css">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 </head>
 <body>
@@ -13,7 +13,7 @@
 <!--            <div class=”alert-danger”>-->
 <!--                <%= Objects.toString(request.getAttribute(Keys.ERROR), "") %>-->
 <!--            </div>-->
-            <form th:action="@{/registration_process}" method="post" th:object="${user}" accept-charset="utf-8" class="form" role="form">
+            <form th:action="@{/registration_process}" method="post" th:object="${userDto}" accept-charset="utf-8" class="form" role="form">
                 <legend>Sign Up</legend>
                 <h4>It's free and always will be.</h4>
                 <div class="row">

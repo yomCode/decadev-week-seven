@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>log in</title>
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300i,400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../static/login.css">
 </head>
 <body>
 <div class="container">
@@ -15,14 +15,13 @@
             <h3>Facebook helps you connect and share with the people in your life.</h3>
         </div>
         <div class="col-md-5">
-            <form th:action=login method="post" class="login-form">
+            <form th:action="@{/user-login}"  method="post" th:object="${loginUser}" class="login-form" >
                 <div class="error_msg"></div>
                 <div class="mb-3">
-                    <input type="email" name="email" class="form-control" placeholder="Email address or phone number"
-                           required>
+                    <input type="email" name="email" class="form-control"  placeholder="Email address or phone number"  th:field="*{email}" required>
                 </div>
                 <div class="mb-3">
-                    <input type="password" name="password" class="form-control" placeholder="Password"
+                    <input type="password" name="password"  class="form-control" placeholder="Password" th:field="*{password}"
                            required>
                 </div>
                 <button type="submit" class="btn btn-custom btn-lg btn-block mt-3">Login</button>
