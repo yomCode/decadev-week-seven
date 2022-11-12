@@ -1,6 +1,7 @@
 package dev.decagon.fcaebookdemo.controller;
 
 
+import dev.decagon.fcaebookdemo.models.User;
 import dev.decagon.fcaebookdemo.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import pojos.LoginDto;
 import pojos.UserDto;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 @RequiredArgsConstructor
@@ -35,7 +38,7 @@ public class UserController {
 
     @GetMapping("/welcome")
     public String welcome_page(){
-        return "welcome";
+        return "feeds";
     }
 
     @PostMapping("/registration_process")
@@ -48,12 +51,16 @@ public class UserController {
     }
 
     @PostMapping("/user-login")
-    public String userLogin(UserDto userDto){
-        if(userService.validateUser(userDto) != null){
-            return "redirect:/welcome";
+    public String userLogin(UserDto userDto, HttpSession session){
+        User user = userService.validateUser(userDto);
+        if(user != null){
+
+            session.setAttribute("currUser", user);
+
+            return "feeds";
 
         }else{
-            return "redirect:/login";
+            return "login";
         }
 
 

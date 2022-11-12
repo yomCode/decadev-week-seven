@@ -2,7 +2,7 @@ package dev.decagon.fcaebookdemo.serviceImpl;
 
 
 import dev.decagon.fcaebookdemo.models.User;
-import dev.decagon.fcaebookdemo.repositories.UserRepo;
+import dev.decagon.fcaebookdemo.repositories.UserRepository;
 import dev.decagon.fcaebookdemo.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
@@ -15,7 +15,7 @@ import pojos.UserDto;
 @Service
 public class UserServiceImpl implements UserService {
 
-   private final UserRepo userRepo;
+   private final UserRepository userRepo;
 
     public User saveUserto_Db(UserDto userDto){
         User user = new User();

@@ -9,6 +9,6 @@ public interface UserService {
 
     User saveUserto_Db(UserDto userDto);
 
-    User  validateUser(UserDto userDto);
+    User validateUser(UserDto userDto);
 
 }
