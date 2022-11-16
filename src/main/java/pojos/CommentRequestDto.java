@@ -1,13 +1,15 @@
 package pojos;
 
+
+import dev.decagon.fcaebookdemo.models.Post;
 import dev.decagon.fcaebookdemo.models.User;
 import lombok.Data;
 
 @Data
-public class PostRequestDto {
+public class CommentRequestDto {
 
     private String content;
     private User user_id;
-    private String post_author;
+    private Post post_id;
 
 }

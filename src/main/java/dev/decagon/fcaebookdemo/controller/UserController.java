@@ -36,11 +36,6 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping("/welcome")
-    public String welcome_page(){
-        return "feeds";
-    }
-
     @PostMapping("/registration_process")
     public String createUser(UserDto userDto){
 
@@ -54,15 +49,22 @@ public class UserController {
     public String userLogin(UserDto userDto, HttpSession session){
         User user = userService.validateUser(userDto);
         if(user != null){
-
             session.setAttribute("currUser", user);
 
-            return "feeds";
+            return "redirect:/feeds";
 
         }else{
-            return "login";
+            return "redirect:/login";
         }
 
+
+    }
+
+    @PostMapping("/log-out")
+    public String logout(HttpSession session){
+        session.invalidate();
+
+        return "login";
 
     }
 
