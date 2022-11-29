@@ -4,6 +4,7 @@ package dev.decagon.fcaebookdemo.models;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -27,8 +28,10 @@ public class User {
     @Column(name = "date_of_birth", nullable = false)
     private String dob;
     @CreationTimestamp
+    @DateTimeFormat(pattern = "yyyy-MM-dd-hh-mm")
     private LocalDateTime created_At;
     @UpdateTimestamp
+    @DateTimeFormat(pattern = "yyyy-MM-dd-hh-mm")
     private LocalDateTime Updated_At;
 
 

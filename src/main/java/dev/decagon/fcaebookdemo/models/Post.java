@@ -4,6 +4,7 @@ import lombok.Data;
 import net.minidev.json.annotate.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -29,18 +30,20 @@ public class Post {
     private String post_Author;
     @Column(name="created_At")
     @CreationTimestamp
+    @DateTimeFormat(pattern = "yyyy-MM-dd-hh-mm")
     private LocalDateTime created_At;
     @Column(name = "updated_At")
     @UpdateTimestamp
+    @DateTimeFormat(pattern = "yyyy-MM-dd-hh-mm")
     private LocalDateTime updated_At;
 
     @JsonIgnore
     @OneToMany(mappedBy = "post_id",  cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Comment> comments;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Like> likes;
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    private List<Like> likes;
 
 
 }
